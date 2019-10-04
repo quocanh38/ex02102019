@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculate Working Age</title>
+</head>
+
+<body>
+    <h2>Checking Your Retirement Status</h2>
+    Years of Birth: <input class="year-input" type="number" />
+    <br>
+    Gender: <select class="gender-input">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <br>
+    <button class="submit-button">Sumbit</button>
+    <br>
+    <p id="output"></p>
+
+    <script>
+        const yearInput = document.querySelector('.year-input')
+        const genderInput = document.querySelector('.gender-input')
+        const submitButton = document.querySelector('.submit-button')
+
+        const checkRetirementStatus = (gender, year) => {
+            let currentYear = Number(new Date().getFullYear())
+            let workingAge = currentYear - year
+
+            if (year == "")
+                return "Please Input Your Year of Birth!"
+
+            if (year < 0 || year > currentYear)
+                return "Invaild Year of Birth!"
+
+            if (gender == "male" && workingAge < 65)
+                return "Please Keep Working!"
+
+            if (gender == "female" && workingAge < 60)
+                return "Please Keep Working!"
+            else
+                return "Stop Working and Take Vacation, Please!"
+
+        }
+
+        submitButton.addEventListener('click', function () {
+            let gender = genderInput.options[genderInput.selectedIndex].value
+            let year = yearInput.value
+            let results = checkRetirementStatus(gender, year)
+            document.getElementById('output').innerHTML = results
+        })
+    </script>
+</body>
+
+</html>
