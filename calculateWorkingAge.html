@@ -12,10 +12,9 @@
     <h2>Checking Your Retirement Status</h2>
     Years of Birth: <input class="year-input" type="number" />
     <br>
-    Gender: <select class="gender-input">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
+    Gender:
+    <input type="radio" name="gender" value="male" checked>Male</option>
+    <input type="radio" name="gender" value="female">Female</option>
     <br>
     <button class="submit-button">Sumbit</button>
     <br>
@@ -23,7 +22,7 @@
 
     <script>
         const yearInput = document.querySelector('.year-input')
-        const genderInput = document.querySelector('.gender-input')
+        const genderInput = document.getElementsByName('gender')
         const submitButton = document.querySelector('.submit-button')
 
         const checkRetirementStatus = (gender, year) => {
@@ -47,7 +46,11 @@
         }
 
         submitButton.addEventListener('click', function () {
-            let gender = genderInput.options[genderInput.selectedIndex].value
+            let gender
+            for (i = 0; i < genderInput.length; i++) {
+                if (genderInput[i].checked)
+                    gender = genderInput[i].value
+            }
             let year = yearInput.value
             let results = checkRetirementStatus(gender, year)
             document.getElementById('output').innerHTML = results
