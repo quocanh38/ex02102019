@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h2>Checking Your Retirement Status</h2>
+    <h2>Checking Retirement Status</h2>
     Years of Birth: <input class="year-input" type="number" />
     <br>
     Gender:
@@ -33,7 +33,7 @@
                 return "Please Input Your Year of Birth!"
 
             if (year < 0 || year > currentYear)
-                return "Invaild Year of Birth!"
+                return "Invalid Year of Birth!"
 
             if (gender == "male" && workingAge < 65 || gender == "female" && workingAge < 60)
                 return "Please Keep Working!"

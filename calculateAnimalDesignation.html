@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculate Animal Designation</title>
+</head>
+
+<body>
+    <h2>Checking Animal Designation</h2>
+    Year of Birth: <input class="year-input" type="number" />
+    <button class="submit-button">Submit</button>
+    <p id="output"></p>
+
+    <script>
+        const animalDesignation = ["Tí", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"]
+        let yearInput = document.querySelector('.year-input')
+        const submitButton = document.querySelector('.submit-button')
+
+        const checkAnimalDesignation = (year) => {
+            const currentYear = Number(new Date().getFullYear())
+            let age = currentYear - year
+
+            return "You are <strong>" + age + " </strong>years old and your animal designation is <strong>" + animalDesignation[(year + 8) % 12] + "</strong>"
+        }
+
+        submitButton.addEventListener('click', function () {
+            let year = Number(yearInput.value)
+            let results = checkAnimalDesignation(year)
+            document.getElementById('output').innerHTML = results
+            yearInput.value = ""
+        })
+    </script>
+</body>
+
+</html>
