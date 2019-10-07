@@ -16,20 +16,27 @@
 
     <script>
         const animalDesignation = ["Tí", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"]
-        let yearInput = document.querySelector('.year-input')
+        const yearInput = document.querySelector('.year-input')
         const submitButton = document.querySelector('.submit-button')
 
         const checkAnimalDesignation = (year) => {
             const currentYear = Number(new Date().getFullYear())
             let age = currentYear - year
+            let animalDesignationSequence = (year + 8) % 12
 
-            return "You are <strong>" + age + " </strong>years old and your animal designation is <strong>" + animalDesignation[(year + 8) % 12] + "</strong>"
+            return "You are <strong>" + age + " </strong>years old and your animal designation is <strong>" + animalDesignation[animalDesignationSequence] + "</strong>."
         }
 
         submitButton.addEventListener('click', function () {
-            let year = Number(yearInput.value)
-            let results = checkAnimalDesignation(year)
-            document.getElementById('output').innerHTML = results
+            let year = yearInput.value
+
+            if (year === "")
+                document.getElementById('output').innerHTML = "Please input your year of birth!"
+            else if (year < 0)
+                document.getElementById('output').innerHTML = "Invalid year of birth!"
+            else
+                document.getElementById('output').innerHTML = checkAnimalDesignation(Number(year))
+
             yearInput.value = ""
         })
     </script>

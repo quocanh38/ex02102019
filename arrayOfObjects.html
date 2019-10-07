@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array of Objects</title>
+    <style>
+        body div {
+            width: 200px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-detail {
+            display: block;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //making array of book object
+        let products = [];
+        let newProduct = { name: "Product 01", price: 100, image: "assets/images/pro01.jpg", description: "This is product 01" };
+        products.push(newProduct);
+        newProduct = { name: "Product 02", price: 110, image: "assets/images/pro02.jpg", description: "This is product 02" };
+        products.push(newProduct);
+        newProduct = { name: "Product 03", price: 120, image: "assets/images/pro03.jpg", description: "This is product 03" };
+        products.push(newProduct);
+        newProduct = { name: "Product 04", price: 130, image: "assets/images/pro04.jpg", description: "This is product 04" };
+        products.push(newProduct);
+        newProduct = { name: "Product 05", price: 140, image: "assets/images/pro05.jpg", description: "This is product 05" };
+        products.push(newProduct);
+
+        let i
+        let theDiv
+        for (i = 0; i < products.length; i++) {
+            theDiv = document.createElement("div")
+            theDiv.innerHTML = `<image class="product-image" src="${products[i].image}">
+            <h3 class="product-detail">${products[i].name}</h3>
+            <span class="product-detail">$${products[i].price}</span>
+            <span class="product-detail">${products[i].description}</span>`
+            document.body.appendChild(theDiv)
+        }
+    </script>
+</body>
+
+</html>

@@ -21,7 +21,7 @@
     <p id="output"></p>
 
     <script>
-        let yearInput = document.querySelector('.year-input')
+        const yearInput = document.querySelector('.year-input')
         const genderInput = document.getElementsByName('gender')
         const submitButton = document.querySelector('.submit-button')
 
@@ -29,7 +29,7 @@
             const currentYear = Number(new Date().getFullYear())
             let workingAge = currentYear - year
 
-            if (year == "")
+            if (year === "")
                 return "Please Input Your Year of Birth!"
 
             if (year < 0 || year > currentYear)
@@ -48,10 +48,12 @@
                 if (genderInput[i].checked)
                     gender = genderInput[i].value
             }
-            let year = Number(yearInput.value)
+            let year = yearInput.value
             let results = checkRetirementStatus(gender, year)
+
             document.getElementById('output').innerHTML = results
-            yearInput.value = "";
+
+            yearInput.value = ""
         })
     </script>
 </body>
