@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Print Even Numbers</title>
+</head>
+
+<body>
+    <h2>Print Even Numbers When Input a Limited Number</h2>
+    <input class="number-input" type="number">
+    <button class="print-button">Print Even Numbers</button>
+    <p id="output"></p>
+
+    <script>
+        const numberEle = document.querySelector('.number-input')
+        const printBtn = document.querySelector('.print-button')
+
+        printBtn.addEventListener('click', function () {
+            if (numberEle.value === "") return
+
+            if (numberEle.value < 0) return
+
+            const limitedNumber = Number(numberEle.value)
+            const evenNumbers = printEvenNumbers(limitedNumber)
+            document.getElementById('output').innerHTML = evenNumbers
+            numberEle.value = ""
+        })
+
+        const printEvenNumbers = (limitedNumber) => {
+            if (isNaN(limitedNumber)) return
+
+            let i
+            let evenNumbers = []
+            for (i = 0; i < limitedNumber; i++) {
+                if (i % 2 == 0) {
+                    evenNumbers.push(i)
+                }
+            }
+            return evenNumbers
+        }
+    </script>
+</body>
+
+</html>
